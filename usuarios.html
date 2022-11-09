@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:#FFE600">   
+<center>
+    <img src="Logo_meli.png">
+		<h2> Etiquetagem de Usuarios </h2>
+		<BR>
+<p>IP Impressora:</p>
+
+<p id="demo"></p>
+<input type="text" id="ip_addr" class="input" placeholder="IP">
+<p>Colaborador:</p>
+<input type="text" id="colaborador" class="input" placeholder="Nome Completo...">
+<p>Usuario:</p>
+<input type="text" id="qrusuario" class="input" placeholder="Usuario...">
+<p>Lms:</p>
+<input type="text" id="qrlms" class="input" placeholder="LMS...">
+<p>Senha:</p>
+<input type="text" id="qrsenha" class="input" placeholder="Senha...">
+<p>Setor:</p>
+<input type="text" id="setor" class="input" placeholder="Setor...">
+<p>Gestor:</p>
+<input type="text" id="gestor" class="input" placeholder="Gestor...">
+<p>Turno:</p>
+<input type="text" id="turno" class="input" placeholder="T1...">
+<br>
+<br>
+<button  class="input" onclick="print(); return false;">Imprimir</button>
+<BR>
+<script>
+	function print()
+
+			{ 
+			var colaborador = document.getElementById("colaborador").value;
+	        var qrusuario = document.getElementById("qrusuario").value;
+	        var qrlms = document.getElementById("qrlms").value;
+	        var qrsenha = document.getElementById("qrsenha").value;
+            var setor = document.getElementById("setor").value;
+			var gestor = document.getElementById("gestor").value;
+			var turno = document.getElementById("turno").value;
+	var ip_addr = document.getElementById("ip_addr").value;
+	var zpl = "^XA~TA000~JSN^LT0^MNW^MTT^PON^PMN^LH0,0^JMA^PR6,6~SD22^JUS^LRN^CI0^XZ^XA^MMT^PW815^LL0406^LS0^FO448,224^GFA,01280,01280,00020,:Z64:eJzt0kFr02AYB/BXszpBaSls6KEjlX6Adp5ykGbDjZwFS07S+Q1WUNgh5Q3zYKDQfAKtR0/2AwzsDoP3MEEKSk4jMbmMCVuLlMSa5O/batLZetnNg88hb3j45XnzPDyE/A+yWpuPxySH+QiJ+JfcFVxg9Bbcdk2dZfypC8p4M8uxqRsBEU1z1tS1+JuJ8Tjudbtn45etiatD5V8MNjRRWT7cVTLcxeWYyB4cUrxBiM4f3EXqCPXPGGYabOXRq8ZSg7vvjnCh34bXLu1Le29L+h53PlQGUNbe2dLooXKkaSTn4byIWPbaxesS1YXf7qQJ9KzOeqg119RPE3cBI5bR4fXOpUq2pEvc2bzFOmz2en1L21x5upTn9x5P2zC9diVbFfSd7OT/+pNhRKJvN59QtR/VVe4MPsFvjvnH/OxtikixfTrL5T46At6VTVe+7KLnsKltiZfdjzHOaMc9wPte4lhE6TMqMpUVxMR5cbV6P5bde/s3hcTxLiwVMssf5ZXEfUHr2Axlt2IUvcQNMTqph5TlPzQeJi6QT3XZgSsZTlovFFFDH9ZaYWgnLr7Fzxfc3R18Tfclw49lsEJhN70XOt+XHNwHUpDWw2C1do3CbzajtA8EfNN/dZ/2C2yQOwt7ekq6C3s6F1fa+4XcPxQ/AezvZyA=:78F0^FO64,0^GFA,23040,23040,00072,:Z64:eJzt3LFthEAQBVBODghdAqVQGpTmUq4EhwToMLucK5gvC1nvF/CCnZ0J/zCI1DIetTwv5lFkjmPtzlR2tu7MZWfvTpk5jsZ8BJyvwLRa2sQ+A853ZFzXwBLOHhn75SwB55X5Pv0DhZz6lraszdmKd2d6O2vRebydItOeeD3XdC87y7moCWfuTvWZ20Pfzxn78eBwOBwOh8PhcDgcDofD4XA4HA6Hw+FwOBwOh8PhcDgcDofD4XA4HA6Hw+FwOBwOh8PhcDgcDofD4XA4HA6Hw/l/zt16n3JOql/rVXaW00n1jwX70FI9bxHnbj14sX6/OeAkewungNNWNNUPOQac55Drz0z1ecb6Raeys/2ufTHVwyN/nh/Dsg9j:5D67^FT283,198^BQN,2,6^FH\^FDLA,"+qrusuario+"^FS^FT480,198^BQN,2,6^FH\^FDLA,qrsenha^FS^FT99,198^BQN,2,6^FH\^FDLA,"+qrlms+"^FS^FT130,208^A0N,28,28^FH\^FDLMS^FS^FT291,208^A0N,28,28^FH\^FDUSUARIO^FS^FT503,208^A0N,28,28^FH\^FDSENHA^FS^FT99,245^A0N,28,28^FH\^FDGESTOR:^FS^FT99,287^A0N,28,28^FH\^FDSETOR:^FS^FT173,48^A0N,28,28^FH\^FD"+colaborador+"^FS^FT211,245^A0N,28,28^FH\^FD"+gestor+"^FS^FT192,287^A0N,28,28^FH\^FD"+setor+"^FS^FO374,238^GB35,46,46^FS^FT374,274^A0N,37,36^FR^FH\^FD"+turno+"^FS^PQ1,0,1,Y^XZ";
+	var url = "http://"+ip_addr+":9100/pstprnt";
+				var method = "POST";
+				var async = true;
+				var request = new XMLHttpRequest();
+	
+				request.onload = function () {
+					var status = request.status; 
+					var data = request.responseText; 
+					output.innerHTML = "Status: " + status + "<br>" + data;
+				}
+	
+				request.open(method, url, async);
+				request.setRequestHeader("Content-Length", zpl.length);
+	
+				
+				request.send(zpl);
+			}
+		</script>
+
+</body>
+</html>
