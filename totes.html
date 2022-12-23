@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:#FFE600">   
+    <img src="Logotipo_MercadoLivre.png"width="150px" height="36px">
+	<center>
+    
+		<h2> Correção de Totes </h2>
+		<BR>
+<p>IP Impressora:</p>
+
+<p id="demo"></p>
+<input type="text" id="ip_addr" class="input" placeholder="IP" value="10.180.240.5">
+<p>Tote:</p>
+<input id="tote" type="text" id="tote" class="input" placeholder="qr tote...">
+<br>
+<br>
+<button id="enviar" class="input" onclick="print(); return false;">Imprimir</button>
+<BR>
+    <BR>
+        <img src="etiqueta tote.png"width="178px" height="305px">
+
+<script>
+	function print()
+
+			{ 
+			var tote = document.getElementById("tote").value;
+			const myArray = tote.split("-");
+			var sigla = myArray[4];
+	var ip_addr = document.getElementById("ip_addr").value;
+	var zpl = "^XA^PW815^FT566,359^A0B,211,208^FH\^FD"+sigla+"^FS^FT648,365^A0B,47,33^FH\^FD"+tote+"^FS^BY288,288^FT72,348^BXN,16,200,0,0,1,~^FH\^FD"+tote+"^FS^FT750,290^A0B,74,74^FH\^FDTOTE^FS^PQ1,0,1,Y^XZ^XA^PW815^FT566,359^A0B,211,208^FH\^FD"+sigla+"^FS^FT648,365^A0B,47,33^FH\^FD"+tote+"^FS^BY288,288^FT72,348^BXN,16,200,0,0,1,~^FH\^FD"+tote+"^FS^FT750,290^A0B,74,74^FH\^FDTOTE^FS^PQ1,0,1,Y^XZ^XA^PW815^FT566,359^A0B,211,208^FH\^FD"+sigla+"^FS^FT648,365^A0B,47,33^FH\^FD"+tote+"^FS^BY288,288^FT72,348^BXN,16,200,0,0,1,~^FH\^FD"+tote+"^FS^FT750,290^A0B,74,74^FH\^FDTOTE^FS^PQ1,0,1,Y^XZ^XA^PW815^FT566,359^A0B,211,208^FH\^FD"+sigla+"^FS^FT648,365^A0B,47,33^FH\^FD"+tote+"^FS^BY288,288^FT72,348^BXN,16,200,0,0,1,~^FH\^FD"+tote+"^FS^FT750,290^A0B,74,74^FH\^FDTOTE^FS^PQ1,0,1,Y^XZ";
+	var url = "http://"+ip_addr+":9100/pstprnt";
+				var method = "POST";
+				var async = true;
+				var request = new XMLHttpRequest();
+	
+				request.onload = function () {
+					var status = request.status; 
+					var data = request.responseText; 
+					output.innerHTML = "Status: " + status + "<br>" + data;
+				}
+	
+				request.open(method, url, async);
+				request.setRequestHeader("Content-Length", zpl.length);
+	
+				
+				request.send(zpl);
+			}
+		</script>
+
+</body>
+</html>
