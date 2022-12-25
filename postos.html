@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:#FFE600">   
+  <a href="//www.mercadolivre.com.br">
+    <img src="Logotipo_MercadoLivre.png"width="150px" height="36px">
+    </a>
+    <br>
+	<center>
+<body>
+	<head>
+		<style>
+			 body{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            div{
+                background-color: rgba(0, 0, 0, 0.5);
+                position:absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                padding: 30px;
+                border-radius: 20px;
+                color: white;
+                
+            }
+            button {
+          background-color: #FFE600;
+          border: none;
+          color: white;
+          padding: 16px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: center;
+          align-items: center;
+          font-size: 16px;
+          margin: 4px 2px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+
+        }
+        
+        button {
+          background-color: white; 
+          color: black; 
+          border: 2px solid #000000;
+          border-radius: 10px;
+        }
+        
+        button:hover {
+          background-color: #FFE600;
+          color: rgb(0, 0, 0);
+        }
+		</style>
+	</head>
+</body>
+    <div>
+		<h1> Impressão de Postos </h1>
+		<BR>
+<p>IP Impressora:</p>
+
+<p id="demo"></p>
+<input type="text" id="ip_addr" class="input" placeholder="IP" value="10.180.243.134">
+<p>Posto:</p>
+<input id="posto" type="text" id="posto" class="input" placeholder="posto...">
+<BR>
+	<p>Canalização:</p>
+<input id="canaliza" type="text" class="input" placeholder="Canalização...">
+<br>
+<p>ETD:</p><select id="etd" Class="input"Tipo de posto:></p>
+    <option>00:00</option>
+    <option>01:00</option>
+    <option>02:00</option>
+    <option>03:00</option>
+    <option>06:00</option>
+    <option>07:00</option>
+    <option>08:00</option>
+    <option>09:00</option>
+    <option>12:00</option>
+    <option>13:00</option>
+    <option>14:00</option>
+    <option>16:00</option>
+    <option>17:00</option>
+    <option>18:00</option>
+    <option>18:30</option>
+    <option>19:00</option>
+    <option>20:00</option>
+    <option>21:00</option>
+    <option>22:00</option>
+    <option>23:00</option>
+</select>
+    <BR>
+        <p> Tipo de Posto:</p>
+	<select id="tipo">Tipo de posto:</p>
+		<option>Manga Palet</option>
+		<option>Gaylord</option>
+    </select>
+<BR>
+	<BR>
+<button id="enviar" class="input" onclick="print(); return false;">Imprimir</button>
+<BR>
+    <BR>
+    
+
+<script>
+	function print()
+
+			{ 
+			var posto = document.getElementById("posto").value;
+			var canaliza = document.getElementById("canaliza").value;
+			var etd = document.getElementById("etd").value;
+			var tipo = document.getElementById("tipo").value;
+			
+	var ip_addr = document.getElementById("ip_addr").value;
+	var zpl = "^XA~TA000~JSN^LT0^MNW^MTT^PON^PMN^LH0,0^JMA^PR6,6~SD19^JUS^LRN^CI0^XZ^XA^MMT^PW815^LL0406^LS0^FO352,288^GFA,05376,05376,00056,:Z64:eJzt1rENgCAQRuEzJFSGmo417FiN0RzFEdgAzxF4hUryf6F9CTR3mImIyLvGvNOzArrhXW3zVyzedPC07XoO0C000h0WSGbZIup2S6hLXhJxmS6rU6fus26VOUE7OnfpnKd7he4xujfpnrZK/hON/0NERER+4AbkAN0J:1457^FT419,133^A0N,63,38^FH\^FD"+posto+"^FS^FO415,31^GB105,47,47^FS^FT415,68^A0N,38,38^FR^FH\^FDPOSTO^FS^FO640,31^GB61,48,48^FS^FT640,69^A0N,39,38^FR^FH\^FDETD^FS^FO394,141^GB349,170,170^FS^FT394,277^A0N,135,134^FR^FH\^FD"+canaliza+"^FS^FT609,131^A0N,60,60^FH\^FD"+etd+"^FS^FT485,346^A0N,33,33^FH\^FD"+tipo+"^FS^BY322,322^FT28,354^BXN,23,200,0,0,1,~^FH\^FD"+posto+"^FS^PQ1,0,1,Y^XZ";
+	var url = "http://"+ip_addr+":9100/pstprnt";
+				var method = "POST";
+				var async = true;
+				var request = new XMLHttpRequest();
+	
+				request.onload = function () {
+					var status = request.status; 
+					var data = request.responseText; 
+					output.innerHTML = "Status: " + status + "<br>" + data;
+				}
+	
+				request.open(method, url, async);
+				request.setRequestHeader("Content-Length", zpl.length);
+	
+				
+				request.send(zpl);
+			}
+		</script>
+
+</body>
+</html>
