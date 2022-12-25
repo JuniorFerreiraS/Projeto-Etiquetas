@@ -3,8 +3,28 @@
 <body style="background-color:#FFE600">   
     <img src="Logotipo_MercadoLivre.png"width="150px" height="36px">
 	<center>
-    
-		<h2> Etiquetagem de Usuarios </h2>
+		<body>
+			<head>
+				<style>
+					 body{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            div{
+                background-color: rgba(0, 0, 0, 0.5);
+                position:absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                padding: 30px;
+                border-radius: 20px;
+                color: white;
+                
+            }
+				</style>
+			</head>
+		</body>
+		<div>
+		<h1> Etiquetagem de Usuarios </h1>
 		<BR>
 <p>IP Impressora:</p>
 
@@ -21,9 +41,7 @@
 <p>Setor:</p>
 <input type="text" id="setor" class="input" placeholder="Setor...">
 <p>Gestor:</p>
-<input type="text" id="gestor" class="input" placeholder="Gestor...">
-<p>Turno:</p>
-<input type="text" id="turno" class="input" placeholder="T1...">
+<input type="text" id="gestor" class="input" placeholder="Gestor..."> <p>Turno:</p><input type="text" id="turno" class="input" placeholder="T1...">
 <br>
 <br>
 <button  class="input" onclick="print(); return false;">Imprimir</button>
