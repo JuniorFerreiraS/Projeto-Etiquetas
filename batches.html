@@ -79,7 +79,7 @@
       var adress4 = myArray[4];
       var sigla = adress2 + "-" + adress3 + "-" + adress4
 	    var ip_addr = document.getElementById("ip_addr").value;
-	    var zpl = "^XA^PW831^BY360,360^FT429,389^BXB,20,200,0,0,1,~^FH\^FD"+ adress +"^FS^FT547,380^A0B,87,62^FH\^FD"+ sigla +"^FS^FT736,394^A0B,67,33^FH\^FD"+ adress +"^FS^FO611,14^GB0,391,5^FS^PQ1,0,1,Y^XZ";
+	    var zpl = "^XA^PW831^BY360,360^FT429,389^BXB,20,200,0,0,1,~^FH\^FD"+ adress +"^FS^FT547,380^A0B,87,62^FH\^FD"+ sigla +"^FS^FT736,394^A0B,67,33^FH\^FD"+ adress +"^FS^FO611,14^GB0,391,5^FS^PQ1,0,1,Y^XZ^XA^PW831^BY360,360^FT429,389^BXB,20,200,0,0,1,~^FH\^FD"+ adress +"^FS^FT547,380^A0B,87,62^FH\^FD"+ sigla +"^FS^FT736,394^A0B,67,33^FH\^FD"+ adress +"^FS^FO611,14^GB0,391,5^FS^PQ1,0,1,Y^XZ";
 	    var url = "http://"+ip_addr+":9100/pstprnt";
 			var method = "POST";
 			var async = true;
