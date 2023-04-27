@@ -5,7 +5,7 @@
     <img src="Logotipo_MercadoLivre.png"width="150px" height="36px">
     </a>
     <br>
-	<center>
+    <center>
 		<body>
 			<head>
 				<style>
@@ -66,6 +66,7 @@
 <br>
 <button  class="input" onclick="print(); return false;">Imprimir</button>
 <BR>
+</center>
 <script>
 	function print()
 
@@ -73,16 +74,15 @@
 			var adress = document.getElementById("adress").value;
       const myArray = adress.split("-");
       var letra = myArray[4];
-      var numero = myArray[5].charAt(1);
-      if ((letra == "01")) {var letraa = "A"}
-      if ((letra == "02")) {var letraa = "B"}
-      if ((letra == "03")) {var letraa = "C"}
-      if ((letra == "04")) {var letraa = "D"}
-      if ((letra == "05")) {var letraa = "E"}
-      if ((letra == "06")) {var letraa = "F"}
-      var bin = letraa+numero
+      var numero = myArray[5];
+      if ((letra = "01")) {var letraa = "A"}
+      if ((letra = "02")) {var letraa = "B"}
+      if ((letra = "03")) {var letraa = "C"}
+      if ((letra = "04")) {var letraa = "D"}
+      if ((letra = "05")) {var letraa = "E"}
+      if ((letra = "06")) {var letraa = "F"}
 	var ip_addr = document.getElementById("ip_addr").value;
-	var zpl = "^XA^PW831^FO104,43^GB623,69,69^FS^FT104,98^A0N,55,55^FR^FH\^FD"+adress+"^FS^FT104,258^A0N,131,129^FH\^FDPW^FS^FO312,114^GB167,182,182^FS^FT312,259^A0N,144,163^FR^FH\^FD"+bin+"^FS^FT534,311^BQN,2,8^FH\^FDLA,"+adress+"^FS^PQ1,0,1,Y^XZ";
+	var zpl = "^XA^PW831^FO104,43^GB623,69,69^FS^FT104,98^A0N,55,55^FR^FH\^FD"+adress+"^FS^FT104,258^A0N,131,129^FH\^FDPW^FS^FO312,114^GB88,182,182^FS^FT312,259^A0N,144,163^FR^FH\^FD"+letra+"^FS^FT534,311^BQN,2,8^FH\^FDLA,"+adress+"^FS^FO400,114^GB79,182,182^FS^FT400,259^A0N,144,163^FR^FH\^FD"+numero+"^FS^PQ1,0,1,Y^XZ";
 	var url = "http://"+ip_addr+":9100/pstprnt";
 				var method = "POST";
 				var async = true;
